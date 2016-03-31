@@ -7,12 +7,12 @@ import java.awt.Graphics2D;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class Exe4_13 {
+public class Exe4_12 {
 
     public static void main(String[] args) {
 
-        JFrame frame = new JFrame("Exercise 4.13");
-        JPanel panel = new Excersise13();
+        JFrame frame = new JFrame("Exercise 4.12");
+        JPanel panel = new Excersise12();
 
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.getContentPane().add(panel);
@@ -22,15 +22,15 @@ public class Exe4_13 {
 
     }
 
-    public Exe4_13() {
+    public Exe4_12() {
 
     }
 
 }
 
-class Excersise13 extends JPanel {
+class Excersise12 extends JPanel {
 
-    public Excersise13() {
+    public Excersise12() {
 
     }
 

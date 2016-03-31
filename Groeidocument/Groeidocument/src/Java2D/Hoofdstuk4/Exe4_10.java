@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.Timer;
 import javax.swing.*;
 
 public class Exe4_10 {
@@ -62,8 +63,9 @@ class Excersise10 extends JPanel implements ActionListener{
     public void actionPerformed(ActionEvent e){
 
         angle += 10;
-        if(angle > 360)
+        if(angle > 360) {
             angle -= 360;
+        }
             repaint();
     }
 
