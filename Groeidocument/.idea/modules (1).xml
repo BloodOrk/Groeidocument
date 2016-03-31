@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/BareMinimum/BareMinimum.iml" filepath="$PROJECT_DIR$/BareMinimum/BareMinimum.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Butterfly/Butterfly.iml" filepath="$PROJECT_DIR$/Butterfly/Butterfly.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Groeidocument/Groeidocument.iml" filepath="$PROJECT_DIR$/Groeidocument/Groeidocument.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HelloWorld2D-Applet/HelloWorld2D-Applet.iml" filepath="$PROJECT_DIR$/HelloWorld2D-Applet/HelloWorld2D-Applet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HelloWorld2D-JPanel/HelloWorld2D-JPanel.iml" filepath="$PROJECT_DIR$/HelloWorld2D-JPanel/HelloWorld2D-JPanel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SpiroGraph/SpiroGraph.iml" filepath="$PROJECT_DIR$/SpiroGraph/SpiroGraph.iml" />
+    </modules>
+  </component>
+</project>

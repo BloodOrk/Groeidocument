@@ -1,0 +1,42 @@
+package chapter2;
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import java.awt.geom.*;
+
+public class Ex6 extends JApplet {
+  public static void main(String s[]) {
+    JFrame frame = new JFrame();
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    JApplet applet = new Ex6();
+    applet.init();
+    frame.getContentPane().add(applet);
+    frame.pack();
+    frame.setVisible(true);
+  }
+  
+  public void init() {
+    JPanel panel = new Ex6Panel();
+    getContentPane().add(panel);
+  }
+}
+
+class Ex6Panel extends JPanel{  
+  public Ex6Panel() {
+    setPreferredSize(new Dimension(400, 400));
+    setBackground(Color.white);
+  }
+
+  public void paintComponent(Graphics g) {
+    super.paintComponent(g);
+    Graphics2D g2 = (Graphics2D)g;
+    g2.translate(100, 50);
+    GeneralPath path = new GeneralPath(GeneralPath.WIND_EVEN_ODD);
+    path.moveTo(150,0);
+    path.curveTo(-50, 50, -50, 250, 150, 300);
+    path.quadTo(50, 150, 150, 0);
+    path.closePath();
+    g2.fill(path);
+  }
+}

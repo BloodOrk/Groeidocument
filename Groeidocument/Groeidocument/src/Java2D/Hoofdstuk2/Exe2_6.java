@@ -1,0 +1,60 @@
+package Java2D.Hoofdstuk2;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.geom.GeneralPath;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class Exe2_6 {
+
+	public static void main(String[] args) {
+
+		JFrame frame = new JFrame("Exercise 2.6");
+		JPanel panel = new Excersise6();
+
+		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		frame.getContentPane().add(panel);
+		frame.pack();
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+	}
+
+	public Exe2_6() {
+
+	}
+
+}
+
+class Excersise6 extends JPanel {
+
+	public Excersise6() {
+
+	}
+
+	public void paintComponent(Graphics g) {
+		super.paintComponents(g);
+		Graphics2D g2 = (Graphics2D) g;
+		Graphics2D g3 = (Graphics2D) g;
+
+		g2.translate(getWidth() / 2, getHeight() / 2);
+		g2.scale(1, -1);
+		g2.drawLine(0, -getHeight() / 2, 0, getHeight() / 2);
+		g2.drawLine(-getWidth() / 2, 0, getWidth() / 2, 0);
+		Color c;
+
+		c = Color.green;
+
+		GeneralPath s = new GeneralPath();
+		s.moveTo(0, 0);
+		s.curveTo(0, 0, -150, 50, 0, 100);
+		s.curveTo(0, 100, -75, 50, 0, 0);
+		g2.setColor(c);
+		g2.fill(s);
+
+	}
+
+}

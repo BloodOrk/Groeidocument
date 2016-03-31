@@ -1,0 +1,69 @@
+package Hoofdstuk2;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Shape;
+import java.awt.geom.Area;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Rectangle2D;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class Exe2_7 {
+
+	public static void main(String[] args) {
+
+		JFrame frame = new JFrame("Exercise 2.7");
+		JPanel panel = new Excersise7();
+
+		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		frame.setBackground(Color.darkGray);
+		frame.getContentPane().add(panel);
+		frame.pack();
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+	}
+
+	public Exe2_7() {
+
+	}
+
+}
+
+class Excersise7 extends JPanel {
+
+	public Excersise7() {
+
+	}
+
+	public void paintComponent(Graphics g) {
+		super.paintComponents(g);
+		Graphics2D g2 = (Graphics2D) g;
+
+		g2.translate(getWidth() / 2, getHeight() / 2);
+		g2.scale(1, -1);
+		Color c1 = Color.black;
+		Color c2 = Color.white;
+
+		Shape ellipse1 = new Ellipse2D.Double(0, 0, 400, 400);
+		Shape ellipse2 = new Ellipse2D.Double(0, 100, 200, 200);
+		Shape ellipse3 = new Ellipse2D.Double(200, 100, 200, 200);
+		Shape ellipse4 = new Ellipse2D.Double(75, 150, 50, 50);
+
+		Shape rect1 = new Rectangle2D.Double(0, 200, 400, 200);
+
+		Area areaYingYang = new Area(ellipse1);
+		areaYingYang.subtract(new Area(rect1));
+		areaYingYang.subtract(new Area(ellipse2));
+		areaYingYang.add(new Area(ellipse3));
+		areaYingYang.add(new Area(ellipse4));
+
+		g2.setColor(c2);
+		g2.fill(areaYingYang);
+
+	}
+
+}

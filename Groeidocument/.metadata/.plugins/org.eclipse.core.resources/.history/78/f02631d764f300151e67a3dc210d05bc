@@ -1,0 +1,29 @@
+package Hoofdstuk2;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class Exe2_2 {
+
+	public static void main(String[] args) {
+
+		JFrame frame = new JFrame("Exercise 2.2");
+		JPanel panel = new Excersise();
+
+		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		frame.getContentPane().add(panel);
+		frame.pack();
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+	}
+
+	public Exe2_2() {
+
+	}
+
+}
+
+class Excersise extends JPanel {
+
+}

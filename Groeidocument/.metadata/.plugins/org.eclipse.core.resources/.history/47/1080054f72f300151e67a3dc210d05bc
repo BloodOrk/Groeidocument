@@ -1,0 +1,61 @@
+package Hoofdstuk2;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.geom.Area;
+import java.awt.geom.Ellipse2D;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class Exe2_5 {
+
+	public static void main(String[] args) {
+
+		JFrame frame = new JFrame("Exercise 2.5");
+		JPanel panel = new Excersise5();
+
+		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		frame.getContentPane().add(panel);
+		frame.pack();
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+	}
+
+	public Exe2_5() {
+
+	}
+
+}
+
+class Excersise5 extends JPanel {
+
+	Ellipse2D.Double moon;
+	Area ellipse1;
+	Area ellipse2;
+
+	public Excersise5() {
+
+	}
+
+	public void paintComponent(Graphics g) {
+		super.paintComponents(g);
+		Graphics2D g2 = (Graphics2D) g;
+
+		g2.translate(getWidth() / 2 - 125, getHeight() / 2 - 125);
+		g2.scale(1, -1);
+		Color c;
+		c = Color.BLACK;
+
+		moon = new Ellipse2D.Double(0, 0, 250, 250);
+		ellipse1 = new Area(moon);
+		moon = new Ellipse2D.Double(50, 0, 250, 250);
+		ellipse2 = new Area(moon);
+		ellipse1.subtract(ellipse2);
+		g2.fill(ellipse1);
+
+	}
+
+}

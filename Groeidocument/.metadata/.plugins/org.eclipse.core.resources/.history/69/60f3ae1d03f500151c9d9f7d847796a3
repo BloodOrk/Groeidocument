@@ -1,0 +1,63 @@
+
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.geom.Rectangle2D;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class Exe2_4 {
+
+	public static void main(String[] args) {
+
+		JFrame frame = new JFrame("Exercise 2.4");
+		JPanel panel = new Excersise4();
+
+		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		frame.getContentPane().add(panel);
+		frame.pack();
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+	}
+
+	public Exe2_4() {
+
+	}
+
+}
+
+class Excersise4 extends JPanel {
+
+	public Excersise4() {
+
+	}
+
+	public void paintComponent(Graphics g) {
+		super.paintComponents(g);
+		Graphics2D g2 = (Graphics2D) g;
+
+		g2.translate(0, getHeight() / 8);
+		g2.scale(1, -1);
+		Color c1 = Color.red;
+		Color c2 = Color.black;
+		Rectangle2D square = new Rectangle2D.Double(0, 0, getWidth() / 8, getHeight() / 8);
+
+		for (int x = 0; x < 8; x++) {
+			for (int y = 0; y < 8; y++) {
+				if ((x + y) % 2 == 0) {
+					g2.setColor(c1);
+					g2.fill(square);
+				} else {
+					g2.setColor(c2);
+					g2.fill(square);
+				}
+				g2.translate(getWidth() / 8, 0);
+
+			}
+			g2.translate(-getWidth(), -getHeight() / 8);
+		}
+	}
+}

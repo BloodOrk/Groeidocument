@@ -1,0 +1,37 @@
+
+package chapter1;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class Ex4 extends JPanel {
+    int x = 100;
+    int y = 100;
+    
+    public Ex4() {
+        addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent ev) {
+                x = ev.getX();
+                y = ev.getY();
+                repaint();
+            }
+        });
+    }
+    
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.fillOval(x-10, y-10, 20, 20);
+    }
+    
+    public static void main(String[] args) {
+        JFrame frame = new JFrame();
+        Ex4 panel = new Ex4();
+        frame.add(panel);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setBounds(200, 100, 500, 400);
+        frame.setVisible(true);
+    }   
+    
+}
+

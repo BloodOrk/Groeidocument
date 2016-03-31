@@ -1,0 +1,28 @@
+
+package chapter1;
+
+import java.awt.*;
+import java.awt.event.*;
+
+public class Ex2 extends Canvas {
+    public void paint(Graphics g) {
+        int w = this.getWidth();
+        int h = this.getHeight();
+        int d = Math.min(w, h) - 10;
+        g.drawOval((w-d)/2, (h-d)/2, d, d);
+    }
+    
+    public static void main(String[] args) {
+        Frame frame = new Frame();
+        Ex2 panel = new Ex2();
+        frame.add(panel);
+        WindowListener l = new WindowAdapter() {
+            public void windowClosing(WindowEvent ev) {
+                System.exit(0);
+            }
+        };
+        frame.addWindowListener(l);
+        frame.setBounds(200, 100, 500, 400);
+        frame.setVisible(true);
+    }   
+}
