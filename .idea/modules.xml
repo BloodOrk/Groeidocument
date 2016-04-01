@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Groeidocument.iml" filepath="$PROJECT_DIR$/.idea/Groeidocument.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Groeidocument/BareMinimum/BareMinimum.iml" filepath="$PROJECT_DIR$/Groeidocument/BareMinimum/BareMinimum.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Groeidocument/Butterfly/Butterfly.iml" filepath="$PROJECT_DIR$/Groeidocument/Butterfly/Butterfly.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Groeidocument/Groeidocument/Groeidocument.iml" filepath="$PROJECT_DIR$/Groeidocument/Groeidocument/Groeidocument.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Groeidocument/HelloWorld2D-Applet/HelloWorld2D-Applet.iml" filepath="$PROJECT_DIR$/Groeidocument/HelloWorld2D-Applet/HelloWorld2D-Applet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Groeidocument/HelloWorld2D-JPanel/HelloWorld2D-JPanel.iml" filepath="$PROJECT_DIR$/Groeidocument/HelloWorld2D-JPanel/HelloWorld2D-JPanel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Groeidocument/OefenToetsSingelloop/OefenToetsOGP-2/OefenToetsOGP-2.iml" filepath="$PROJECT_DIR$/Groeidocument/OefenToetsSingelloop/OefenToetsOGP-2/OefenToetsOGP-2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Groeidocument/SpiroGraph/SpiroGraph.iml" filepath="$PROJECT_DIR$/Groeidocument/SpiroGraph/SpiroGraph.iml" />
     </modules>
   </component>
 </project>

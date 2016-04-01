@@ -45,6 +45,10 @@ class Excersise11 extends JPanel implements ActionListener {
     double xVel =  (int) (3 * randomX);
     double yVel = (int) (3 * randomY);
 
+    int xWall = 300;
+    int yWall = 300;
+    int offset = 35;
+
     public Excersise11() {
 
         t.start();
@@ -52,7 +56,7 @@ class Excersise11 extends JPanel implements ActionListener {
     }
 
     public void paintComponent(Graphics g) {
-        super.paintComponents(g);
+        super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
 
         int xCenter = getWidth() / 2;
@@ -68,14 +72,38 @@ class Excersise11 extends JPanel implements ActionListener {
         g2.setColor(Color.green);
         g2.fill(oval);
 
-
     }
 
     public void bounce(){
 
-        double speed = 3.0;
-        xVel = (int) (speed * randomX);
-        yVel = (int) (speed * randomY);
+        randomX = Math.cos(Math.random() * 2 * Math.PI);
+        randomY = Math.sin(Math.random() * 2 * Math.PI);
+        double speed = 3;
+
+        //Right
+        if(x >= 0 && x <= xWall) {
+            xVel = (int) -(speed * randomX);
+            //Top
+            if (y >= 0 && y <= yWall){
+                yVel = (int) (speed * randomY);
+            }
+            //Bottom
+            if(y < 0 && y >= -yWall){
+                yVel = (int) (speed * randomY);
+            }
+        }
+        //Left
+        else if(x <= 0 && x >= -xWall) {
+            xVel = (int) (speed * randomX);
+            //Top
+            if (y >= 0 && y >= yWall){
+                yVel = (int) (speed * randomY);
+            }
+            //Bottom
+            if(y < 0 && y >= -yWall){
+                yVel = (int) (speed * randomY);
+            }
+        }
 
     }
 
@@ -84,25 +112,27 @@ class Excersise11 extends JPanel implements ActionListener {
         x += xVel;
         y += yVel;
 
-        if(x == 150){
+        if(x >= xWall){
 
-            x += 3;
+            x = xWall - offset;
             bounce();
 
         }
-        if(x == -150){
+        if(x <= -xWall){
 
-            x -= 3;
+            x = -xWall + offset;
             bounce();
 
-        }if(y == 50){
+        }
+        if(y >= yWall){
 
-            y -= 3;
+            y = yWall - offset;
             bounce();
 
-        }if(y == -50){
+        }
+        if(y <= -yWall){
 
-            y += 3;
+            y = -yWall + offset;
             bounce();
 
         }
