@@ -58,11 +58,9 @@ class FireworksPanel extends JPanel {
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent me){
-
-                System.out.println(flares);
-                System.out.println(me.getX() + " " + me.getY());
-                explosion(me.getX(), me.getY());
-
+                if(SwingUtilities.isLeftMouseButton((me))) {
+                    explosion(me.getX(), me.getY());
+                }
             }
         });
 
