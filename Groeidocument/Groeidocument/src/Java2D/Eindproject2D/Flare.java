@@ -68,7 +68,7 @@ public class Flare {
 
         g2d.setColor(c);
 
-        double loops = 70;
+        double loops = 25;
         for (int i = (int)loops; i > 0; i--) {
             double scale = ((double)i) / loops;
             AffineTransform at = AffineTransform.getTranslateInstance(x, y);

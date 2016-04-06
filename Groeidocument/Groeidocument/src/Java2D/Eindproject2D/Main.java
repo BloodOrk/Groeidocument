@@ -18,7 +18,10 @@ public class Main extends JFrame {
 
             public void actionPerformed(ActionEvent e) {
 
-                if (mP.panel.flaresLeft() > 0) {
+                if (mP.panel.flaresLeft() > - 1) {
+                    mP.repaint();
+                }
+                if (mP.panel.smokesLeft() > - 1) {
                     mP.repaint();
                 }
 
@@ -26,9 +29,9 @@ public class Main extends JFrame {
         }).start();
     }
 
-    public Main(){
+    public Main() {
 
-        super();
+        super("2D Awesomeness");
 
         this.panel = new MainPanel();
         this.setBackground(Color.black);
@@ -44,7 +47,6 @@ public class Main extends JFrame {
                 if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
                     System.exit(0);
             }
-
         });
 
     }
@@ -54,25 +56,29 @@ public class Main extends JFrame {
 class MainPanel extends JPanel {
 
     private LinkedList<Flare> flares = new LinkedList<>();
+    private LinkedList<Smoke> smokes = new LinkedList<>();
     private Random rGen = new Random();
 
-    public MainPanel(){
+    public MainPanel() {
 
         setPreferredSize(new Dimension(800, 600));
 
         addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent me){
-                if(SwingUtilities.isLeftMouseButton((me))) {
+            public void mouseClicked(MouseEvent me) {
+                if (SwingUtilities.isLeftMouseButton(me)) {
                     explosion(me.getX(), me.getY());
+                }
+                if(SwingUtilities.isRightMouseButton(me)){
+                    smokeEmitter(me.getX(), me.getY());
                 }
             }
         });
 
         addMouseMotionListener(new MouseAdapter() {
             @Override
-            public void mouseDragged(MouseEvent me){
-                if(SwingUtilities.isLeftMouseButton((me))) {
+            public void mouseDragged(MouseEvent me) {
+                if (SwingUtilities.isLeftMouseButton((me))) {
                     explosion(me.getX(), me.getY());
                 }
             }
@@ -80,17 +86,17 @@ class MainPanel extends JPanel {
 
     }
 
-    public int flaresLeft(){
+    public int flaresLeft() {
         return flares.size();
     }
 
-    public boolean removeFlare(Flare f){
+    public boolean removeFlare(Flare f) {
         return this.flares.remove(f);
     }
 
-    private void explosion(int x, int y){
+    private void explosion(int x, int y) {
 
-        int flareCount = 50 + rGen.nextInt(20);
+        int flareCount = 50 + rGen.nextInt(50);
         Color c = new Color(rGen.nextInt(255), rGen.nextInt(255), rGen.nextInt(255));
         long lifetime = 1000 + rGen.nextInt(1000);
 
@@ -98,9 +104,9 @@ class MainPanel extends JPanel {
 
     }
 
-    private void createFlare(int x, int y, Color c, int flareCount, long lifetime){
+    private void createFlare(int x, int y, Color c, int flareCount, long lifetime) {
 
-        for(int i = 0; i < flareCount; i++){
+        for (int i = 0; i < flareCount; i++) {
 
             double dir = 360 * rGen.nextDouble();
             double spd = 10 * rGen.nextDouble() + 5;
@@ -110,16 +116,40 @@ class MainPanel extends JPanel {
 
     }
 
+    public int smokesLeft() {
+        return smokes.size();
+    }
+
+    public boolean removeSmoke(Smoke s) {
+        return this.smokes.remove(s);
+    }
+
+    public void smokeEmitter(int x, int y){
+
+        System.out.println("Test " + x + " " + y);
+
+    }
+
+    public void createSmoke(int x, int y, Color c, int smokeCount, long lifetime){
+
+    }
+
     public void paintComponent(Graphics g) {
 
         super.paintComponents(g);
 
-        Graphics2D g2d = (Graphics2D)g;
+        Graphics2D g2d = (Graphics2D) g;
 
-        Flare array[] = flares.toArray(new Flare[0]);
+        Flare arrayF[] = flares.toArray(new Flare[0]);
 
-        for(Flare f : array){
+        for (Flare f : arrayF) {
             f.draw(g2d);
+        }
+
+        Smoke arrayS[] = smokes.toArray(new Smoke[0]);
+
+        for (Smoke s : arrayS){
+            s.draw(g2d);
         }
 
     }
