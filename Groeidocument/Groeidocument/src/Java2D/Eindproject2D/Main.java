@@ -13,15 +13,12 @@ public class Main extends JFrame {
 
     public static void main(String[] args) {
 
-        new Timer(33, new ActionListener() {
+        new Timer(10, new ActionListener() {
             Main mP = new Main();
 
             public void actionPerformed(ActionEvent e) {
 
-                if (mP.panel.flaresLeft() > - 1) {
-                    mP.repaint();
-                }
-                if (mP.panel.smokesLeft() > - 1) {
+                if (mP.panel.flaresLeft() > -1) {
                     mP.repaint();
                 }
 
@@ -56,7 +53,6 @@ public class Main extends JFrame {
 class MainPanel extends JPanel {
 
     private LinkedList<Flare> flares = new LinkedList<>();
-    private LinkedList<Smoke> smokes = new LinkedList<>();
     private Random rGen = new Random();
 
     public MainPanel() {
@@ -68,9 +64,6 @@ class MainPanel extends JPanel {
             public void mouseClicked(MouseEvent me) {
                 if (SwingUtilities.isLeftMouseButton(me)) {
                     explosion(me.getX(), me.getY());
-                }
-                if(SwingUtilities.isRightMouseButton(me)){
-                    smokeEmitter(me.getX(), me.getY());
                 }
             }
         });
@@ -116,24 +109,6 @@ class MainPanel extends JPanel {
 
     }
 
-    public int smokesLeft() {
-        return smokes.size();
-    }
-
-    public boolean removeSmoke(Smoke s) {
-        return this.smokes.remove(s);
-    }
-
-    public void smokeEmitter(int x, int y){
-
-        System.out.println("Test " + x + " " + y);
-
-    }
-
-    public void createSmoke(int x, int y, Color c, int smokeCount, long lifetime){
-
-    }
-
     public void paintComponent(Graphics g) {
 
         super.paintComponents(g);
@@ -144,12 +119,6 @@ class MainPanel extends JPanel {
 
         for (Flare f : arrayF) {
             f.draw(g2d);
-        }
-
-        Smoke arrayS[] = smokes.toArray(new Smoke[0]);
-
-        for (Smoke s : arrayS){
-            s.draw(g2d);
         }
 
     }
