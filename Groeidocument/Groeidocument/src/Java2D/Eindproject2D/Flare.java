@@ -14,12 +14,12 @@ public class Flare {
     private Color c;
     private long lifetime;
     private long spawntime;
-    private FireworksPanel parent;
+    private MainPanel parent;
     private int radius = 5;
     private int diameter = radius * 2;
     private Ellipse2D.Double spark;
 
-    public Flare(FireworksPanel parent, double dir, int x, int y, Color c, long lifetime, double spd){
+    public Flare(MainPanel parent, double dir, int x, int y, Color c, long lifetime, double spd){
 
         this.dir = dir;
         this.spd = spd;

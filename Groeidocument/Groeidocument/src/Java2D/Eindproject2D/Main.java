@@ -1,40 +1,36 @@
 package Java2D.Eindproject2D;
 
+
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.util.LinkedList;
 import java.util.Random;
 
 import javax.swing.*;
 
-public class Fireworks extends JFrame{
-
-    public FireworksPanel panel;
+public class Main extends JFrame {
+    public MainPanel panel;
 
     public static void main(String[] args) {
 
         new Timer(33, new ActionListener() {
-            Fireworks f = new Fireworks();
+            Main mP = new Main();
 
             public void actionPerformed(ActionEvent e) {
 
-                if (f.panel.flaresLeft() > 0) {
-                    f.repaint();
+                if (mP.panel.flaresLeft() > 0) {
+                    mP.repaint();
                 }
 
             }
         }).start();
+    }
 
-        }
-
-    public Fireworks(){
+    public Main(){
 
         super();
 
-        this.panel = new FireworksPanel();
+        this.panel = new MainPanel();
         this.setBackground(Color.black);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -42,22 +38,40 @@ public class Fireworks extends JFrame{
         this.pack();
         this.setVisible(true);
 
+        addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
+                    System.exit(0);
+            }
+
+        });
+
     }
 
 }
 
-class FireworksPanel extends JPanel {
+class MainPanel extends JPanel {
 
     private LinkedList<Flare> flares = new LinkedList<>();
     private Random rGen = new Random();
 
-    public FireworksPanel(){
+    public MainPanel(){
 
         setPreferredSize(new Dimension(800, 600));
 
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent me){
+                if(SwingUtilities.isLeftMouseButton((me))) {
+                    explosion(me.getX(), me.getY());
+                }
+            }
+        });
+
+        addMouseMotionListener(new MouseAdapter() {
+            @Override
+            public void mouseDragged(MouseEvent me){
                 if(SwingUtilities.isLeftMouseButton((me))) {
                     explosion(me.getX(), me.getY());
                 }
@@ -111,4 +125,3 @@ class FireworksPanel extends JPanel {
     }
 
 }
-
