@@ -22,6 +22,10 @@ public class Main extends JFrame {
                     mP.repaint();
                 }
 
+                if (mP.panel.smokesLeft() > -1) {
+                    mP.repaint();
+                }
+
             }
         }).start();
     }
@@ -53,6 +57,7 @@ public class Main extends JFrame {
 class MainPanel extends JPanel {
 
     private LinkedList<Flare> flares = new LinkedList<>();
+    private LinkedList<Flare> smokes = new LinkedList<>();
     private Random rGen = new Random();
 
     public MainPanel() {
@@ -73,6 +78,24 @@ class MainPanel extends JPanel {
             public void mouseDragged(MouseEvent me) {
                 if (SwingUtilities.isLeftMouseButton((me))) {
                     explosion(me.getX(), me.getY());
+                }
+
+                if (SwingUtilities.isRightMouseButton(me)) {
+                    int mouseX = me.getX();
+                    int mouseY = me.getY();
+
+                    Timer timer = new Timer(1, new ActionListener() {
+                        public void actionPerformed(ActionEvent ae) {
+
+                            smokeEmittor(mouseX, mouseY);
+                            smokeEmittor(mouseX, mouseY);
+                            smokeEmittor(mouseX, mouseY);
+                            smokeEmittor(mouseX, mouseY);
+
+                        }
+                    });
+                    timer.start();
+
                 }
             }
         });
@@ -109,16 +132,42 @@ class MainPanel extends JPanel {
 
     }
 
+    public int smokesLeft() {
+        return smokes.size();
+    }
+
+    public boolean removeSmokes(Smoke s) {
+        return this.smokes.remove(s);
+    }
+
+    public void smokeEmittor(int x, int y) {
+
+        createSmoke();
+
+    }
+
+    private void createSmoke() {
+
+
+
+    }
+
     public void paintComponent(Graphics g) {
 
         super.paintComponents(g);
 
-        Graphics2D g2d = (Graphics2D) g;
+        Graphics2D g2 = (Graphics2D) g;
 
         Flare arrayF[] = flares.toArray(new Flare[0]);
 
         for (Flare f : arrayF) {
-            f.draw(g2d);
+            f.draw(g2);
+        }
+
+        Smoke arrayS[] = smokes.toArray(new Smoke[0]);
+
+        for(Smoke s : arrayS){
+            s.draw(g2);
         }
 
     }
