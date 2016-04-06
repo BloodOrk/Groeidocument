@@ -90,7 +90,7 @@ class FireworksPanel extends JPanel {
 
             double dir = 360 * rGen.nextDouble();
             double spd = 10 * rGen.nextDouble() + 5;
-            flares.addLast(new Spark(this, dir, x, y, c, lifetime, spd));
+            flares.addLast(new Flare(this, dir, x, y, c, lifetime, spd));
 
         }
 
