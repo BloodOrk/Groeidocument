@@ -1,8 +1,6 @@
 package Java2D.Hoofdstuk3;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.awt.geom.AffineTransform;
 
 import javax.swing.JFrame;
@@ -32,6 +30,8 @@ public class Exe3_09 {
 class Excersise9 extends JPanel {
 
     public Excersise9() {
+
+        setPreferredSize(new Dimension(400, 400));
 
     }
 
